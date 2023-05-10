@@ -1,0 +1,58 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+# Route for the home page
+@app.route('/')
+def home():
+    # Define data to be passed to the template
+    featured_companies = [
+        {
+            'name': 'Company A',
+            'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'logo': 'company_a_logo.png'
+        },
+        {
+            'name': 'Company B',
+            'description': 'Praesent eu massa vel diam laoreet venenatis.',
+            'logo': 'company_b_logo.png'
+        },
+        {
+            'name': 'Company C',
+            'description': 'Aenean eget purus vel augue feugiat varius.',
+            'logo': 'company_c_logo.png'
+        }
+    ]
+    services = [
+        {
+            'name': 'Service A',
+            'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'icon': 'service_a_icon.png'
+        },
+        {
+            'name': 'Service B',
+            'description': 'Praesent eu massa vel diam laoreet venenatis.',
+            'icon': 'service_b_icon.png'
+        },
+        {
+            'name': 'Service C',
+            'description': 'Aenean eget purus vel augue feugiat varius.',
+            'icon': 'service_c_icon.png'
+        }
+    ]
+    testimonials = [
+        {
+            'quote': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'author': 'John Doe, Company D'
+        },
+        {
+            'quote': 'Praesent eu massa vel diam laoreet venenatis.',
+            'author': 'Jane Smith, Company E'
+        }
+    ]
+    
+    # Render the template and pass the data
+    return render_template('home.html', featured_companies=featured_companies, services=services, testimonials=testimonials)
+
+if __name__ == '__main__':
+    app.run()
